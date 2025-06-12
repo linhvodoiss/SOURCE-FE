@@ -13,7 +13,9 @@ export const WebHeaderStyled = styled.div<{ $mobileWidth?: number }>`
         }
       `,
       portrait: css`
-        background-color: violet;
+        .header__container {
+          background-color: violet;
+        }
       `,
     })}
 `
