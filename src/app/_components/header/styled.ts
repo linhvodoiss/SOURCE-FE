@@ -3,21 +3,17 @@
 import styled, { css } from 'styled-components'
 import { scaleMediaStyles } from '~/utils/styles'
 
-
-
 export const WebHeaderStyled = styled.div<{ $mobileWidth?: number }>`
   ${({ $mobileWidth }) =>
     scaleMediaStyles($mobileWidth, {
-      base: css`
-
-      `,
+      base: css``,
       landscape: css`
-      .header__container{
-        background-color: rebeccapurple;
-      }
+        .header__container {
+          background-color: rebeccapurple;
+        }
       `,
       portrait: css`
- background-color: violet;
+        background-color: violet;
       `,
     })}
 `

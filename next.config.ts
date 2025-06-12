@@ -1,7 +1,7 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-   /* config options here */
+  /* config options here */
   output: 'standalone',
   compiler: {
     styledComponents: true,
@@ -24,6 +24,6 @@ const nextConfig: NextConfig = {
   //     },
   //   ]
   // },
-};
+}
 
-export default nextConfig;
+export default nextConfig

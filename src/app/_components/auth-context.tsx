@@ -4,8 +4,6 @@ import { createContext, ReactNode, useContext, useEffect, useMemo, useState, use
 
 import { User } from '#/user'
 
-
-
 type AuthContextType = {
   user?: User
 }
@@ -16,37 +14,14 @@ type AuthProviderType = {
   user?: User
 }
 
-const AuthContext = createContext<AuthContextType>({
-
-})
+const AuthContext = createContext<AuthContextType>({})
 
 export const AuthProvider = ({ children, token, user }: AuthProviderType) => {
- 
-
   useEffect(() => {
     if (token) {
-console.log('có token');
-
-    } else console.log('ko có token');
+      console.log('có token')
+    } else console.log('ko có token')
   }, [token, user])
 
-  return (
-    <AuthContext.Provider value={{ user }}>
-      {children}
-  
-    </AuthContext.Provider>
-  )
+  return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
 }
-
-
-
-
-
-
-
-
-
-
-
-
-  
