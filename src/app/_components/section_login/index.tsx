@@ -29,7 +29,14 @@ export default function LoginForm() {
   })
   async function onSubmit(data: z.infer<typeof LoginFormSchema>) {
     startTransition(async () => {
-      const res = await http.post(LINKS.login_api, { body: JSON.stringify(data) })
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      }).then(res => res.json())
+
       if (!CODE_SUCCESS.includes(res.code)) {
         toast.error(res.message)
         return
