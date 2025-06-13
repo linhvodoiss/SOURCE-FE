@@ -14,7 +14,6 @@ export type CustomRequestInit = Omit<RequestInit, 'method'> & {
 
 const prettyUrl = (url?: string, prefix = false) => (url?.endsWith('/') ? url.slice(0, prefix ? 1 : -1) : (url ?? ''))
 const log = console.log
-
 const http = {
   async request<T>(
     url: string,
@@ -24,7 +23,6 @@ const http = {
     const iBaseUrl = typeof baseUrl !== 'undefined' ? prettyUrl(baseUrl) : prettyUrl(env.BASE_API_URL)
     const href = `${iBaseUrl}${prettyUrl(url, true)}`
     const fullUrl = `${href}${params ? `?${qs.stringify(params)}` : ''}`
-
     try {
       const iHeaders: HeadersInit = {
         'Content-Type': 'application/json',
