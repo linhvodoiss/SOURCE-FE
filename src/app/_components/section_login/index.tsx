@@ -34,14 +34,18 @@ export default function LoginForm() {
         toast.error(res.message)
         return
       }
-
+      toast.success(res.message)
       router.refresh()
     })
   }
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className='w-full pr-[3%] text-[#005C76]' autoComplete='off'>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className='w-1/3 bg-amber-600 p-[3%] text-[#005C76]'
+        autoComplete='off'
+      >
         <FormField
           control={form.control}
           name='userName'

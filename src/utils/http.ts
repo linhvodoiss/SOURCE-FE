@@ -6,6 +6,7 @@ import { env } from '~/configs/env'
 import Storage from '~/utils/Storage'
 
 import { BaseResponse } from '#/api'
+import { LINKS } from '~/constants/links'
 
 export type CustomRequestInit = Omit<RequestInit, 'method'> & {
   baseUrl?: string
@@ -54,7 +55,7 @@ const http = {
         log('--------------------------------------------------')
       }
 
-      if (typeof window !== 'undefined' && resJson?.code === 401) {
+      if (typeof window !== 'undefined' && resJson?.code === 401 && !url.endsWith(LINKS.login_api)) {
         Storage?.clear()
         if (window.location.pathname === '/') window.location.reload()
         else window.location.href = '/'

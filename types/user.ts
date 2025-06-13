@@ -1,10 +1,19 @@
 export type LoginResponse = {
-  access_token: string
-  userId: string
-  username: string
-  created_at: string
-  updated_at: string
-  expires_in?: number
+  code: number
+  message: string
+  user?: UserLogin
+}
+
+type UserLogin = {
+  token: string
+  userName: string
+  email: string
+  firstName: string
+  lastName: string
+  phoneNumber: number
+  role: string
+  id: number
+  status: string
 }
 
 export type User = {
