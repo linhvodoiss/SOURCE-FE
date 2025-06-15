@@ -29,15 +29,7 @@ export default function LoginForm() {
   })
   async function onSubmit(data: z.infer<typeof LoginFormSchema>) {
     startTransition(async () => {
-      const res = await http.post(LINKS.login_api, { body: JSON.stringify(data), baseUrl: LINKS.login_api })
-      // await fetch('/api/auth/login', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   body: JSON.stringify(data),
-      // }).then(res => res.json())
-
+      const res = await http.post(LINKS.login_api, { body: JSON.stringify(data), baseUrl: 'api/auth' })
       if (!CODE_SUCCESS.includes(res.code)) {
         toast.error(res.message)
         return
@@ -51,9 +43,10 @@ export default function LoginForm() {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className='w-1/3 bg-amber-600 p-[3%] text-[#005C76]'
+        className='mx-auto mt-4 w-1/2 rounded-2xl border-2 border-black p-[3%] text-[#005C76] shadow-2xl'
         autoComplete='off'
       >
+        <h2 className='text-center text-4xl'>Đăng nhập</h2>
         <FormField
           control={form.control}
           name='userName'
@@ -62,11 +55,11 @@ export default function LoginForm() {
               <FormControl>
                 <Input
                   placeholder='Tên tài khoản'
-                  className='w-full rounded-md border-none bg-white px-[3%] py-[5%] text-base outline-none md:rounded-xl md:!text-xl'
+                  className='mt-4 w-full rounded-xl bg-white px-4 py-6 text-base'
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className='text-red-700' />
             </FormItem>
           )}
         />
@@ -79,11 +72,11 @@ export default function LoginForm() {
                 <Input
                   type='password'
                   placeholder='Mật khẩu'
-                  className='mt-[4%] w-full rounded-md border-none bg-white px-[3%] py-[5%] text-base outline-none md:rounded-xl md:!text-xl'
+                  className='mt-4 w-full rounded-xl bg-white px-4 py-6 text-base'
                   {...field}
                 />
               </FormControl>
-              <FormMessage />
+              <FormMessage className='text-red-700' />
             </FormItem>
           )}
         />
@@ -91,27 +84,23 @@ export default function LoginForm() {
           <div className='text-end'>
             <Link
               href='https://id.adnx.vn/forgot-password'
-              className='mt-[1.5%] mb-[2%] block w-full !text-end text-[1.8vw] text-white lg:text-[1vw]'
+              className='mt-4 mb-4 block w-full !text-end text-xs text-white'
               target='_blank'
             >
               Quên mật khẩu?
             </Link>
           </div>
-          <div className='flex w-full items-center justify-between text-white'>
+          <div className='flex w-full items-center justify-between gap-4 text-white'>
             <button
-              className="hover-header-button flex aspect-[316/144] w-full items-center justify-center bg-red-600 bg-[url('/loren/san-boss-chao-he/header/btn_link.png')] bg-contain bg-no-repeat pb-[4%]"
+              className='hover-header-button w-full cursor-pointer items-center justify-center rounded-2xl bg-[#005C76] py-4'
               type='submit'
               disabled={isPending}
             >
-              <span className='text-white'>ĐĂNG NHẬP</span>
+              ĐĂNG NHẬP
             </button>
-            <Link
-              href='https://id.adnx.vn/register'
-              className="hover-header-button flex aspect-[316/144] w-full items-center justify-center bg-[url('/loren/san-boss-chao-he/header/btn_link.png')] bg-contain bg-no-repeat pb-[4%]"
-              target='_blank'
-            >
-              <span className='text-white'>ĐĂNG ký</span>
-            </Link>
+            <button className='hover-header-button w-full cursor-pointer items-center justify-center rounded-2xl py-4 text-[#005C76] shadow-2xl'>
+              ĐĂNG KÝ
+            </button>
           </div>
         </div>
       </form>

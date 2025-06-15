@@ -1,10 +1,4 @@
 export type LoginResponse = {
-  code: number
-  message: string
-  user?: UserLogin
-}
-
-type UserLogin = {
   token: string
   userName: string
   email: string
