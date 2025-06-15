@@ -27,17 +27,13 @@ export default async function RootLayout({
     cookieStore.get(AUTH.userInfo)?.value ? JSON.parse(cookieStore.get(AUTH.userInfo)!.value) : undefined
   ) as User | undefined
 
-  if (token) {
-    console.log(token)
-    console.log(user)
-  }
   return (
     <html lang='en'>
       <body className={cn('antialiased', eremitageFont.variable)} suppressHydrationWarning>
         <div className='font-eremitage'>
           <Suspense fallback={<LoadingFallback />}>
             <AuthProvider token={token} user={user}>
-              <Header />
+              <Header token={token} user={user} />
               {children}
             </AuthProvider>
           </Suspense>

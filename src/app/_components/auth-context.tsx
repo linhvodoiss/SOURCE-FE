@@ -16,12 +16,6 @@ type AuthProviderType = {
 
 const AuthContext = createContext<AuthContextType>({})
 
-export const AuthProvider = ({ children, token, user }: AuthProviderType) => {
-  useEffect(() => {
-    if (token) {
-      console.log('có token')
-    } else console.log('ko có token')
-  }, [token, user])
-
+export const AuthProvider = ({ children, user }: AuthProviderType) => {
   return <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
 }
