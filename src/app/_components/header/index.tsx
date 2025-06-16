@@ -24,26 +24,26 @@ export default function Header({ token, user }: Props) {
   }
 
   return (
-    <WebHeaderStyled className='bg-[#005C76]'>
+    <WebHeaderStyled className='bg-background-primary border-primary-system border-b-2'>
       <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between px-8 text-2xl text-white'>
         <ul className='flex items-center justify-center'>
           <li>
-            <Link href='/' className='px-8 py-6 hover:underline'>
+            <Link href='/' className='header__link'>
               Home
             </Link>
           </li>
           <li>
-            <Link href='/' className='px-8 py-6 hover:underline'>
+            <Link href='/' className='header__link'>
               Product
             </Link>
           </li>
           <li>
-            <Link href='/' className='px-8 py-6 hover:underline'>
+            <Link href='/' className='header__link'>
               Blog
             </Link>
           </li>
           <li>
-            <Link href='/' className='px-8 py-6 hover:underline'>
+            <Link href='/' className='header__link'>
               About
             </Link>
           </li>
@@ -55,15 +55,15 @@ export default function Header({ token, user }: Props) {
         ) : (
           <Popover>
             <PopoverTrigger>
-              <div className='cursor-pointer px-8 py-6 hover:underline'>{user?.userName}</div>
+              <div className='header__link'>{user?.userName}</div>
             </PopoverTrigger>
-            <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-2 text-xl shadow-2xl'>
-              <button className='text-primary border-primary-system w-full cursor-pointer rounded-t-2xl border-2 border-b-0 py-2 hover:underline'>
+            <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-[1px] px-0 text-xl shadow-2xl'>
+              <button className='border-primary-system text-primary w-full cursor-pointer py-2 hover:bg-[rgba(3,93,117,0.2)]'>
                 Hồ sơ tài khoản
               </button>
               <button
                 disabled={isPending}
-                className='text-primary border-primary-system w-full cursor-pointer rounded-b-2xl border-2 py-2 hover:underline'
+                className='border-primary-system text-primary w-full cursor-pointer py-2 hover:bg-[rgba(3,93,117,0.2)]'
                 onClick={logoutHandler}
               >
                 Đăng xuất
