@@ -24,6 +24,7 @@
   --color-chart-1: var(--chart-1);
   --color-ring: var(--ring);
   --color-input: var(--input);
+  --color-toggle: var(--toggle);
   --color-border: var(--border);
   --color-destructive: var(--destructive);
   --color-accent-foreground: var(--accent-foreground);
@@ -35,6 +36,7 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-primary: var(--primary);
   --color-primary-system: var(--primary-system);
+  --color-primary-mute: var(--color-primary-mute);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
@@ -53,6 +55,11 @@ body {
 }
 
 :root {
+  /**************** change color you want here ***********/
+  --color-primary-base: rgba(0, 92, 118, 1);
+  --color-primary-mute: rgba(0, 92, 118, 0.2);
+  --color-light: color-mix(in srgb, var(--color-primary-base) 80%, white);
+  /*******************************************************/
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -60,7 +67,7 @@ body {
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: #005c76;
+  --primary: var(--color-primary-base);
   --primary-foreground: oklch(0.985 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -70,8 +77,9 @@ body {
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --input: var(--color-primary-base);
+  --ring: var(--color-primary-base);
+  --toggle: var(--color-light);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -85,8 +93,8 @@ body {
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --primary-system: #005c76;
-  --background-primary: #005c76;
+  --primary-system: var(--color-primary-base);
+  --background-primary: var(--color-primary-base);
 }
 
 .dark {
@@ -107,8 +115,9 @@ body {
   --accent-foreground: oklch(0.985 0 0);
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
+  --input: var(--color-primary-mute);
+  --ring: var(--color-primary-base);
+  --toggle: #252525;
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);

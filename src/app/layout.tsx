@@ -10,6 +10,7 @@ import Header from './_components/header'
 import { cookies } from 'next/headers'
 import { AUTH } from '~/constants'
 import { User } from '#/user'
+import { ThemeProvider } from './_components/theme-provider'
 
 export const metadata: Metadata = {
   title: 'Automate',
@@ -28,14 +29,16 @@ export default async function RootLayout({
   ) as User | undefined
 
   return (
-    <html lang='en'>
+    <html lang='en' className='light' style={{ colorScheme: 'light' }} suppressHydrationWarning>
       <body className={cn('antialiased', eremitageFont.variable)} suppressHydrationWarning>
         <div className='font-eremitage'>
           <Suspense fallback={<LoadingFallback />}>
-            <AuthProvider token={token} user={user}>
-              <Header token={token} user={user} />
-              {children}
-            </AuthProvider>
+            <ThemeProvider attribute='class' defaultTheme='system' enableSystem disableTransitionOnChange>
+              <AuthProvider token={token} user={user}>
+                <Header token={token} user={user} />
+                {children}
+              </AuthProvider>
+            </ThemeProvider>
           </Suspense>
         </div>
         <Toaster richColors theme='light' />

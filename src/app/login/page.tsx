@@ -36,6 +36,7 @@ export default function LoginForm() {
         return
       }
       toast.success(res.message)
+      router.push('/')
       router.refresh()
     })
   }
@@ -57,7 +58,7 @@ export default function LoginForm() {
                 <FormControl>
                   <Input
                     placeholder='Tên tài khoản'
-                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 !text-lg'
+                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
                     {...field}
                   />
                 </FormControl>
@@ -74,7 +75,7 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='Mật khẩu'
-                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 !text-lg'
+                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
                     {...field}
                   />
                 </FormControl>
@@ -94,15 +95,18 @@ export default function LoginForm() {
             </div>
             <div className='flex w-full items-center justify-between gap-4 text-white'>
               <button
-                className='hover-header-button bg-primary-system w-full cursor-pointer items-center justify-center rounded-2xl py-4'
+                className='hover-header-button bg-primary-system w-full cursor-pointer items-center justify-center rounded-2xl py-6'
                 type='submit'
                 disabled={isPending}
               >
                 ĐĂNG NHẬP
               </button>
-              <button className='hover-header-button text-primary border-primary-system w-full cursor-pointer items-center justify-center rounded-2xl border-2 py-4'>
+              <Link
+                href='/register'
+                className='hover-header-button text-primary border-primary-system flex w-full cursor-pointer items-center justify-center rounded-2xl border-2 py-6'
+              >
                 ĐĂNG KÝ
-              </button>
+              </Link>
             </div>
           </div>
         </form>

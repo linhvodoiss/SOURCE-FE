@@ -7,6 +7,9 @@ import { useTransition } from 'react'
 import http from '~/utils/http'
 import { LINKS } from '~/constants/links'
 import { useRouter } from 'next/navigation'
+import { useTheme } from 'next-themes'
+import { Button } from '~/components/ui/button'
+import { Moon, Sun } from 'lucide-react'
 
 type Props = Readonly<{
   token?: string
@@ -15,10 +18,13 @@ type Props = Readonly<{
 
 export default function Header({ token, user }: Props) {
   const router = useRouter()
+  const { theme, setTheme, resolvedTheme } = useTheme()
   const [isPending, startTransition] = useTransition()
+  const current = theme === 'system' ? resolvedTheme : theme
   const logoutHandler = () => {
     startTransition(async () => {
       await http.post(LINKS.logout_api, { baseUrl: 'api/auth' })
+      router.push('/')
       router.refresh()
     })
   }
@@ -47,9 +53,21 @@ export default function Header({ token, user }: Props) {
               About
             </Link>
           </li>
+          <li>
+            <Button
+              className='hover:!bg-toggle scale-150 !border-none !bg-transparent !text-white'
+              variant='outline'
+              size='icon'
+              aria-label='Toggle theme'
+              onClick={() => setTheme(current === 'dark' ? 'light' : 'dark')}
+            >
+              {current === 'dark' ? <Sun className='h-8 w-8' /> : <Moon className='h-8 w-8' />}
+            </Button>
+          </li>
         </ul>
+
         {!token ? (
-          <Link href='/login' className='px-8 py-6 hover:underline'>
+          <Link href='/login' className='header__link'>
             Đăng nhập
           </Link>
         ) : (
@@ -58,12 +76,12 @@ export default function Header({ token, user }: Props) {
               <div className='header__link'>{user?.userName}</div>
             </PopoverTrigger>
             <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-[1px] px-0 text-xl shadow-2xl'>
-              <button className='border-primary-system text-primary w-full cursor-pointer py-2 hover:bg-[rgba(3,93,117,0.2)]'>
+              <button className='border-primary-system text-primary hover:bg-primary-mute w-full cursor-pointer py-2'>
                 Hồ sơ tài khoản
               </button>
               <button
                 disabled={isPending}
-                className='border-primary-system text-primary w-full cursor-pointer py-2 hover:bg-[rgba(3,93,117,0.2)]'
+                className='border-primary-system text-primary hover:bg-primary-mute w-full cursor-pointer py-2'
                 onClick={logoutHandler}
               >
                 Đăng xuất
