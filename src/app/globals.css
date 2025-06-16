@@ -117,7 +117,7 @@ body {
   --border: oklch(1 0 0 / 10%);
   --input: var(--color-primary-mute);
   --ring: var(--color-primary-base);
-  --toggle: #252525;
+  --toggle: var(--color-primary-mute);
   --chart-1: oklch(0.488 0.243 264.376);
   --chart-2: oklch(0.696 0.17 162.48);
   --chart-3: oklch(0.769 0.188 70.08);
