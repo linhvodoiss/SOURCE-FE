@@ -10,12 +10,6 @@ type Props = Readonly<{
 }>
 
 export default function Header({ token, user }: Props) {
-  useEffect(() => {
-    if (token) {
-      console.log('đăng nhập')
-    } else console.log('chưa có đăng nhập')
-  }, [token, user])
-
   return (
     <WebHeaderStyled className='mx-auto'>
       <div className='header__container flex w-full items-center justify-between px-8 text-2xl text-white'>
@@ -41,9 +35,13 @@ export default function Header({ token, user }: Props) {
             </Link>
           </li>
         </ul>
-        <Link href='/login' className='px-8 py-6 hover:underline'>
-          Đăng nhập
-        </Link>
+        {!token ? (
+          <Link href='/login' className='px-8 py-6 hover:underline'>
+            Đăng nhập
+          </Link>
+        ) : (
+          <button className='px-8 py-6 hover:underline'>Đăng xuất</button>
+        )}
       </div>
     </WebHeaderStyled>
   )

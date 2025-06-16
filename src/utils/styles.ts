@@ -12,11 +12,11 @@ export const scaleMediaStyles = (
   }
 ) => css`
   ${mediaCss?.base}
-  @media (min-width: ${$mobileWidth}px) or (orientation: landscape) {
+  @media (min-width: ${$mobileWidth}px) {
     ${mediaCss?.landscape}
   }
 
-  @media (max-width: ${$mobileWidth - 1}px) and (orientation: portrait) {
+  @media (max-width: ${$mobileWidth - 1}px) {
     ${mediaCss?.portrait}
   }
 `
