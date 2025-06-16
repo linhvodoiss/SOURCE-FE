@@ -9,12 +9,10 @@ export const WebHeaderStyled = styled.div<{ $mobileWidth?: number }>`
       base: css``,
       landscape: css`
         .header__container {
-          background-color: rebeccapurple;
         }
       `,
       portrait: css`
         .header__container {
-          background-color: violet;
         }
       `,
     })}

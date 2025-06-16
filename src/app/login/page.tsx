@@ -45,7 +45,7 @@ export default function LoginForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='form mx-auto mt-4 w-[600px] rounded-2xl border-2 border-[#005C76] px-8 py-12 text-[#005C76] shadow-2xl'
+          className='form text-primary border-primary-system mx-auto mt-36 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
           autoComplete='off'
         >
           <h2 className='text-center text-4xl'>Đăng nhập</h2>
@@ -57,7 +57,7 @@ export default function LoginForm() {
                 <FormControl>
                   <Input
                     placeholder='Tên tài khoản'
-                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 text-base'
+                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 !text-lg'
                     {...field}
                   />
                 </FormControl>
@@ -74,7 +74,7 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='Mật khẩu'
-                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 text-base'
+                    className='mt-4 w-full rounded-xl bg-white px-4 py-6 !text-lg'
                     {...field}
                   />
                 </FormControl>
@@ -83,10 +83,10 @@ export default function LoginForm() {
             )}
           />
           <div>
-            <div className='text-end'>
+            <div className='text-primary text-end'>
               <Link
                 href='https://id.adnx.vn/forgot-password'
-                className='mt-4 mb-4 block w-full !text-end text-xs text-white'
+                className='mt-4 mb-4 block w-full !text-end text-xs'
                 target='_blank'
               >
                 Quên mật khẩu?
@@ -94,13 +94,13 @@ export default function LoginForm() {
             </div>
             <div className='flex w-full items-center justify-between gap-4 text-white'>
               <button
-                className='hover-header-button w-full cursor-pointer items-center justify-center rounded-2xl bg-[#005C76] py-4'
+                className='hover-header-button bg-primary-system w-full cursor-pointer items-center justify-center rounded-2xl py-4'
                 type='submit'
                 disabled={isPending}
               >
                 ĐĂNG NHẬP
               </button>
-              <button className='hover-header-button w-full cursor-pointer items-center justify-center rounded-2xl border-2 border-[#005C76] py-4 text-[#005C76]'>
+              <button className='hover-header-button text-primary border-primary-system w-full cursor-pointer items-center justify-center rounded-2xl border-2 py-4'>
                 ĐĂNG KÝ
               </button>
             </div>

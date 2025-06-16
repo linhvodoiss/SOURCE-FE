@@ -13,14 +13,8 @@ export type LoginResponse = {
 export type User = {
   id?: string
   userName?: string
-  serverId?: number
-  characterId?: string
-  characterName?: string
-  serverName?: string
-  gameId?: number
-  totalTurn?: number
-  usedTurn?: number
-  streak?: number
-  isReceivedStreak?: boolean
-  bossGiftsReceived?: number[]
+  email?: string
+  firstName?: string
+  lastName?: string
+  phoneNumber?: number
 }
