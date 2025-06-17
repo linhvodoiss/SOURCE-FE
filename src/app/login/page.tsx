@@ -12,6 +12,7 @@ import { Form, FormControl, FormField, FormItem, FormMessage } from '~/component
 import { Input } from '~/components/ui/input'
 import Link from 'next/link'
 import { LoginStyled } from './styled'
+import { LoginResponse } from '#/user'
 const LoginFormSchema = z.object({
   userName: z.string({ message: 'Tên tài khoản là bắt buộc' }).min(1, { message: 'Tên tài khoản là bắt buộc' }),
   password: z.string({ message: 'Mật khẩu là bắt buộc' }).min(1, { message: 'Mật khẩu là bắt buộc' }),
@@ -30,7 +31,7 @@ export default function LoginForm() {
   })
   async function onSubmit(data: z.infer<typeof LoginFormSchema>) {
     startTransition(async () => {
-      const res = await http.post(LINKS.login_api, { body: JSON.stringify(data), baseUrl: 'api/auth' })
+      const res = await http.post<LoginResponse>(LINKS.login_api, { body: JSON.stringify(data), baseUrl: 'api/auth' })
       if (!CODE_SUCCESS.includes(res.code)) {
         toast.error(res.message)
         return

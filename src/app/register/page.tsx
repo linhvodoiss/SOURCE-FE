@@ -41,16 +41,31 @@ export default function LoginForm() {
   })
   async function onSubmit(data: z.infer<typeof RegisterFormSchema>) {
     startTransition(async () => {
-      console.log(data)
+      const [checkEmailRes, checkUserNameRes] = await Promise.all([
+        http.get<{ check: boolean }>(LINKS.check_email_exist, {
+          params: { email: data.email },
+        }),
+        http.get<{ check: boolean }>(LINKS.check_username_exist, {
+          params: { userName: data.userName },
+        }),
+      ])
+
+      if (checkEmailRes.check || checkUserNameRes.check) {
+        if (checkEmailRes.check) toast.error('Email đã tồn tại')
+        if (checkUserNameRes.check) toast.error('Tài khoản đã tồn tại')
+        return
+      }
 
       const res = await http.post(LINKS.register_api, {
         body: JSON.stringify(data),
-        // , baseUrl: 'api/auth'
+        baseUrl: 'api/auth',
       })
+
       if (!CODE_SUCCESS.includes(res.code)) {
         toast.error('Đăng ký thất bại')
         return
       }
+
       toast.success('Đăng ký thành công')
       router.push('/login')
       router.refresh()
