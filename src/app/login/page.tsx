@@ -46,7 +46,7 @@ export default function LoginForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='form border-primary-system mx-auto mt-36 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
+          className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
           autoComplete='off'
         >
           <h2 className='text-primary text-center text-4xl'>Đăng nhập</h2>
