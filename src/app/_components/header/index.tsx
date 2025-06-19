@@ -10,11 +10,19 @@ import { useRouter } from 'next/navigation'
 import { useTheme } from 'next-themes'
 import { Button } from '~/components/ui/button'
 import { Moon, Sun } from 'lucide-react'
+import Image from 'next/image'
 
 type Props = Readonly<{
   token?: string
   user?: User
 }>
+
+const menuItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Product', href: '/' },
+  { label: 'Blog', href: '/' },
+  { label: 'About', href: '/' },
+]
 
 export default function Header({ token, user }: Props) {
   const router = useRouter()
@@ -31,41 +39,30 @@ export default function Header({ token, user }: Props) {
 
   return (
     <WebHeaderStyled className='bg-background-primary border-primary-system border-b-2'>
-      <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between px-8 text-2xl text-white'>
-        <ul className='flex items-center justify-center'>
-          <li>
-            <Link href='/' className='header__link'>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href='/' className='header__link'>
-              Product
-            </Link>
-          </li>
-          <li>
-            <Link href='/' className='header__link'>
-              Blog
-            </Link>
-          </li>
-          <li>
-            <Link href='/' className='header__link'>
-              About
-            </Link>
-          </li>
-          <li>
-            <Button
-              className='hover:!bg-toggle scale-150 !border-none !bg-transparent !text-white'
-              variant='outline'
-              size='icon'
-              aria-label='Toggle theme'
-              onClick={() => setTheme(current === 'dark' ? 'light' : 'dark')}
-            >
-              {current === 'dark' ? <Sun className='h-8 w-8' /> : <Moon className='h-8 w-8' />}
-            </Button>
-          </li>
-        </ul>
-
+      <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between pr-8 text-2xl text-white'>
+        <div className='flex items-center justify-start gap-8'>
+          <Image src='/images/logo.png' alt='logo' width={1024} height={1024} className='w-24 object-contain' />
+          <ul className='flex items-center justify-center'>
+            {menuItems.map(item => (
+              <li key={item.label}>
+                <Link href={item.href} className='header__link'>
+                  {item.label}
+                </Link>
+              </li>
+            ))}
+            <li>
+              <Button
+                className='hover:!bg-toggle scale-150 !border-none !bg-transparent !text-white'
+                variant='outline'
+                size='icon'
+                aria-label='Toggle theme'
+                onClick={() => setTheme(current === 'dark' ? 'light' : 'dark')}
+              >
+                {current === 'dark' ? <Sun className='h-8 w-8' /> : <Moon className='h-8 w-8' />}
+              </Button>
+            </li>
+          </ul>
+        </div>
         {!token ? (
           <Link href='/login' className='header__link'>
             Đăng nhập

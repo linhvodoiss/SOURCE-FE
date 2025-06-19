@@ -88,7 +88,7 @@ export default function LoginForm() {
             <div className='text-primary text-end'>
               <Link
                 href='https://id.adnx.vn/forgot-password'
-                className='mt-4 mb-4 block w-full !text-end text-xs'
+                className='text-md mt-4 mb-4 block w-full !text-end'
                 target='_blank'
               >
                 Quên mật khẩu?

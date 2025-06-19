@@ -11,6 +11,7 @@ import { toast } from 'sonner'
 import { Form, FormControl, FormField, FormItem, FormMessage } from '~/components/ui/form'
 import { Input } from '~/components/ui/input'
 import { RegisterStyled } from './styled'
+import Link from 'next/link'
 const RegisterFormSchema = z.object({
   userName: z.string({ message: 'Tên tài khoản là bắt buộc' }).min(1, { message: 'Tên tài khoản là bắt buộc' }),
   firstName: z.string({ message: 'Họ của bạn là bắt buộc' }).min(1, { message: 'Họ của bạn là bắt buộc' }),
@@ -58,7 +59,6 @@ export default function LoginForm() {
 
       const res = await http.post(LINKS.register_api, {
         body: JSON.stringify(data),
-        baseUrl: 'api/auth',
       })
 
       if (!CODE_SUCCESS.includes(res.code)) {
@@ -188,6 +188,12 @@ export default function LoginForm() {
           >
             TIẾP TỤC
           </button>
+          <p className='text-md mt-8 text-center'>
+            Bạn có tài khoản?
+            <Link href='/login' className='text-primary'>
+              Đăng nhập
+            </Link>
+          </p>
         </form>
       </Form>
     </RegisterStyled>
