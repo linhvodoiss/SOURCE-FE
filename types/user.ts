@@ -4,7 +4,7 @@ export type LoginResponse = {
   email: string
   firstName: string
   lastName: string
-  phoneNumber: number
+  phoneNumber: string
   role: string
   id: number
   status: string
@@ -16,5 +16,5 @@ export type User = {
   email?: string
   firstName?: string
   lastName?: string
-  phoneNumber?: number
+  phoneNumber?: string
 }

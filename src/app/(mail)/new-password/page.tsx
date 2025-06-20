@@ -58,10 +58,10 @@ export default function ResetPasswordForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
+          className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 pt-8 pb-12 shadow-2xl'
           autoComplete='off'
         >
-          <h2 className='text-primary text-center text-4xl'>Đổi mật khẩu</h2>
+          <h2 className='text-primary pb-4 text-center text-3xl'>Đổi mật khẩu</h2>
           <FormField
             control={form.control}
             name='password'
@@ -71,7 +71,7 @@ export default function ResetPasswordForm() {
                   <Input
                     type='password'
                     placeholder='Mật khẩu'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -88,7 +88,7 @@ export default function ResetPasswordForm() {
                   <Input
                     type='password'
                     placeholder='Xác nhận mật khẩu'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -98,7 +98,7 @@ export default function ResetPasswordForm() {
           />
           <div>
             <button
-              className='hover-header-button bg-primary-system mx-auto mt-8 block w-full cursor-pointer items-center justify-center rounded-2xl px-12 py-6 text-white'
+              className='hover-header-button bg-primary-system mx-auto mt-4 block w-full cursor-pointer items-center justify-center rounded-2xl px-12 py-4 text-white'
               disabled={isPending}
             >
               Đổi mật khẩu

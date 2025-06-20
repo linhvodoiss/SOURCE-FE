@@ -18,7 +18,7 @@ export default async function MainLayout({
   return (
     <AuthProvider token={token} user={user}>
       <Header token={token} user={user} />
-      {children}
+      <div className='mx-auto w-full max-w-[1536px]'>{children}</div>
     </AuthProvider>
   )
 }

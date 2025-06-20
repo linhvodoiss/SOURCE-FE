@@ -22,7 +22,7 @@ const menuItems = [
 export default function Header({ token, user }: Props) {
   return (
     <WebHeaderStyled className='bg-background-primary border-primary-system border-b-2'>
-      <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between pr-8 text-2xl text-white'>
+      <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between pr-8 text-xl text-white'>
         <div className='flex items-center justify-start gap-8'>
           <Image src='/images/logo.png' alt='logo' width={1024} height={1024} className='w-24 object-contain' />
           <ul className='flex items-center justify-center'>
@@ -47,7 +47,7 @@ export default function Header({ token, user }: Props) {
             <PopoverTrigger>
               <div className='header__link'>{user?.userName}</div>
             </PopoverTrigger>
-            <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-[1px] px-0 text-xl shadow-2xl'>
+            <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-[1px] px-0 text-lg shadow-2xl'>
               <Link
                 href='/profile'
                 className='border-primary-system text-primary hover:bg-primary-mute mx-auto block w-full cursor-pointer py-2 text-center'

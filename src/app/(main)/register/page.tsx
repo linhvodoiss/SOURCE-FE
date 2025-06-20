@@ -81,11 +81,11 @@ export default function LoginForm() {
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
+          className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 pt-8 pb-12 shadow-2xl'
           autoComplete='off'
           noValidate
         >
-          <h2 className='text-primary text-center text-4xl'>Đăng ký</h2>
+          <h2 className='text-primary pb-4 text-center text-3xl'>Đăng ký</h2>
           <FormField
             control={form.control}
             name='userName'
@@ -94,7 +94,7 @@ export default function LoginForm() {
                 <FormControl>
                   <Input
                     placeholder='Tên tài khoản'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -102,7 +102,7 @@ export default function LoginForm() {
               </FormItem>
             )}
           />
-          <div className='mt-8 flex w-full items-start justify-between gap-8'>
+          <div className='mt-4 flex w-full items-start justify-between gap-8'>
             <FormField
               control={form.control}
               name='firstName'
@@ -111,7 +111,7 @@ export default function LoginForm() {
                   <FormControl>
                     <Input
                       placeholder='Họ của bạn'
-                      className='w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                      className='w-full rounded-xl border-2 px-4 py-6 !text-base'
                       {...field}
                     />
                   </FormControl>
@@ -127,7 +127,7 @@ export default function LoginForm() {
                   <FormControl>
                     <Input
                       placeholder='Tên của bạn'
-                      className='w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                      className='w-full rounded-xl border-2 px-4 py-6 !text-base'
                       {...field}
                     />
                   </FormControl>
@@ -145,7 +145,7 @@ export default function LoginForm() {
                   <Input
                     type='email'
                     placeholder='Email của bạn'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -162,7 +162,7 @@ export default function LoginForm() {
                   <Input
                     type='number'
                     placeholder='Số điện thoại'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -179,7 +179,7 @@ export default function LoginForm() {
                   <Input
                     type='password'
                     placeholder='Mật khẩu'
-                    className='mt-8 w-full rounded-xl border-2 px-4 py-8 !text-lg'
+                    className='mt-4 w-full rounded-xl border-2 px-4 py-6 !text-base'
                     {...field}
                   />
                 </FormControl>
@@ -188,12 +188,12 @@ export default function LoginForm() {
             )}
           />
           <button
-            className='hover-header-button bg-primary-system mx-auto mt-8 block w-full cursor-pointer items-center justify-center rounded-2xl px-12 py-6 text-white'
+            className='hover-header-button bg-primary-system mx-auto mt-4 block w-full cursor-pointer items-center justify-center rounded-2xl px-12 py-4 text-white'
             disabled={isPending}
           >
             TIẾP TỤC
           </button>
-          <p className='text-md mt-8 text-center'>
+          <p className='text-md mt-4 text-center'>
             Bạn có tài khoản?
             <Link href='/login' className='text-primary'>
               Đăng nhập

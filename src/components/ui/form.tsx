@@ -85,7 +85,7 @@ function FormLabel({ className, ...props }: React.ComponentProps<typeof LabelPri
   return (
     <Label
       data-slot='form-label'
-      data-error={!!error}
+      // data-error={!!error}
       className={cn('data-[error=true]:text-destructive', className)}
       htmlFor={formItemId}
       {...props}
@@ -120,17 +120,18 @@ function FormDescription({ className, ...props }: React.ComponentProps<'p'>) {
   )
 }
 
-function FormMessage({ className, ...props }: React.ComponentProps<'p'>) {
+function FormMessage({ className, hint, ...props }: React.ComponentProps<'p'> & { hint?: React.ReactNode }) {
   const { error, formMessageId } = useFormField()
-  const body = error ? String(error?.message ?? '') : props.children
-
-  if (!body) {
-    return null
-  }
+  const message = error ? String(error.message ?? '') : null
 
   return (
-    <p data-slot='form-message' id={formMessageId} className={cn('text-destructive text-sm', className)} {...props}>
-      {body}
+    <p
+      data-slot='form-message'
+      id={formMessageId}
+      className={cn('text-sm', error ? 'text-destructive' : 'text-foreground text-center', className)}
+      {...props}
+    >
+      {message || hint || null}
     </p>
   )
 }
