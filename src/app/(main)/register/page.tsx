@@ -42,18 +42,22 @@ export default function LoginForm() {
   })
   async function onSubmit(data: z.infer<typeof RegisterFormSchema>) {
     startTransition(async () => {
-      const [checkEmailRes, checkUserNameRes] = await Promise.all([
+      const [checkEmailRes, checkUserNameRes, checkPhoneNumberRes] = await Promise.all([
         http.get<{ check: boolean }>(LINKS.check_email_exist, {
           params: { email: data.email },
         }),
         http.get<{ check: boolean }>(LINKS.check_username_exist, {
           params: { userName: data.userName },
         }),
+        http.get<{ check: boolean }>(LINKS.check_phone_number__exist, {
+          params: { phoneNumber: data.phoneNumber },
+        }),
       ])
 
-      if (checkEmailRes.check || checkUserNameRes.check) {
+      if (checkEmailRes.check || checkUserNameRes.check || checkPhoneNumberRes.check) {
         if (checkEmailRes.check) toast.error('Email đã tồn tại')
         if (checkUserNameRes.check) toast.error('Tài khoản đã tồn tại')
+        if (checkPhoneNumberRes.check) toast.error('Số điện thoại đã tồn tại')
         return
       }
 
@@ -79,6 +83,7 @@ export default function LoginForm() {
           onSubmit={form.handleSubmit(onSubmit)}
           className='form border-primary-system mx-auto mt-12 w-[600px] rounded-2xl border-2 px-8 py-12 shadow-2xl'
           autoComplete='off'
+          noValidate
         >
           <h2 className='text-primary text-center text-4xl'>Đăng ký</h2>
           <FormField
@@ -93,7 +98,7 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />
@@ -110,7 +115,7 @@ export default function LoginForm() {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className='text-red-700' />
+                  <FormMessage className='data-[error=true]:text-destructive' />
                 </FormItem>
               )}
             />
@@ -126,7 +131,7 @@ export default function LoginForm() {
                       {...field}
                     />
                   </FormControl>
-                  <FormMessage className='text-red-700' />
+                  <FormMessage className='data-[error=true]:text-destructive' />
                 </FormItem>
               )}
             />
@@ -144,7 +149,7 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />
@@ -161,7 +166,7 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />
@@ -178,7 +183,7 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />

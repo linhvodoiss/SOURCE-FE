@@ -13,6 +13,26 @@ import { Input } from '~/components/ui/input'
 import Link from 'next/link'
 import { LoginStyled } from './styled'
 import { LoginResponse } from '#/user'
+
+// export const URL_LOGIN = 'login'
+// export const URL_REGISTER = 'users'
+// export const URL_FORGET = 'users/resetPasswordRequest'
+// export const URL_LOGOUT = 'logout'
+// export const URL_EMAIL_EXIST = 'users/email'
+// export const URL_USERNAME_EXIST = 'users/userName'
+// export const URL_ACTIVE_AUTOMATIC = 'users/activeUser'
+// export const URL_RESET_PASSWORD = 'users/resetPassword'
+// export const URL_GET_PROFILE = 'users/profile'
+// activeAutomatically(token: string) {
+//   return http.get<AuthResponse>(`${URL_ACTIVE_AUTOMATIC}?token=${token}`)
+// },
+// resetPassword({ token, newPassword }: { token: string; newPassword: string }) {
+//   return http.get<AuthResponse>(`${URL_RESET_PASSWORD}?token=${token}&newPassword=${newPassword}`)
+// },
+// forget(email: string) {
+//   return http.get<AuthResponse>(`${URL_FORGET}?email=${email}`)
+// },
+
 const LoginFormSchema = z.object({
   userName: z.string({ message: 'Tên tài khoản là bắt buộc' }).min(1, { message: 'Tên tài khoản là bắt buộc' }),
   password: z.string({ message: 'Mật khẩu là bắt buộc' }).min(1, { message: 'Mật khẩu là bắt buộc' }),
@@ -63,7 +83,7 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />
@@ -80,17 +100,13 @@ export default function LoginForm() {
                     {...field}
                   />
                 </FormControl>
-                <FormMessage className='text-red-700' />
+                <FormMessage className='data-[error=true]:text-destructive' />
               </FormItem>
             )}
           />
           <div>
             <div className='text-primary text-end'>
-              <Link
-                href='https://id.adnx.vn/forgot-password'
-                className='text-md mt-4 mb-4 block w-full !text-end'
-                target='_blank'
-              >
+              <Link href='/forget' className='text-md mt-4 mb-4 block w-full !text-end'>
                 Quên mật khẩu?
               </Link>
             </div>

@@ -1,16 +1,8 @@
 import Link from 'next/link'
 import { WebHeaderStyled } from './styled'
-import { User } from '#/user'
-import { Popover, PopoverContent, PopoverTrigger } from '~/components/ui/popover'
 
 import Image from 'next/image'
 import ThemeChange from '../theme-change'
-import LogoutBtn from '../logout-btn'
-
-type Props = Readonly<{
-  token?: string
-  user?: User
-}>
 
 const menuItems = [
   { label: 'Home', href: '/' },
@@ -19,7 +11,7 @@ const menuItems = [
   { label: 'About', href: '/' },
 ]
 
-export default function Header({ token, user }: Props) {
+export default function HeaderMail() {
   return (
     <WebHeaderStyled className='bg-background-primary border-primary-system border-b-2'>
       <div className='header__container mx-auto flex w-full max-w-[1920px] items-center justify-between pr-8 text-2xl text-white'>
@@ -38,26 +30,6 @@ export default function Header({ token, user }: Props) {
             </li>
           </ul>
         </div>
-        {!token ? (
-          <Link href='/login' className='header__link'>
-            Đăng nhập
-          </Link>
-        ) : (
-          <Popover>
-            <PopoverTrigger>
-              <div className='header__link'>{user?.userName}</div>
-            </PopoverTrigger>
-            <PopoverContent className='font-eremitage border-primary-system flex flex-col rounded-2xl border-[1px] px-0 text-xl shadow-2xl'>
-              <Link
-                href='/profile'
-                className='border-primary-system text-primary hover:bg-primary-mute mx-auto block w-full cursor-pointer py-2 text-center'
-              >
-                Hồ sơ tài khoản
-              </Link>
-              <LogoutBtn />
-            </PopoverContent>
-          </Popover>
-        )}
       </div>
     </WebHeaderStyled>
   )
