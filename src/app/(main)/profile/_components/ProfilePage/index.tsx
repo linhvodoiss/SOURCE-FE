@@ -36,7 +36,7 @@ export default function ProfilePage({ user }: { user: User }) {
     email: user.email,
     phoneNumber: user.phoneNumber,
   }
-  const [data, setData] = useState(mockData)
+  const [data] = useState(mockData)
 
   const form = useForm<z.infer<typeof RegisterFormSchema>>({
     resolver: zodResolver(RegisterFormSchema),
@@ -114,6 +114,7 @@ export default function ProfilePage({ user }: { user: User }) {
                   <FormLabel className='col-span-2 justify-self-end'>Tên tài khoản</FormLabel>
                   <FormControl>
                     <Input
+                      disabled={!update}
                       readOnly={update}
                       placeholder='Tên tài khoản'
                       className='col-span-10 w-full rounded-xl border-2 px-4 py-6 !text-base'
@@ -176,6 +177,7 @@ export default function ProfilePage({ user }: { user: User }) {
                   <FormLabel className='col-span-2 justify-self-end'>Email</FormLabel>
                   <FormControl>
                     <Input
+                      disabled={!update}
                       readOnly={update}
                       type='email'
                       placeholder='Email của bạn'
@@ -234,6 +236,7 @@ export default function ProfilePage({ user }: { user: User }) {
                   Hủy thay đổi
                 </button>
                 <button
+                  disabled={isPending}
                   type='submit'
                   className='hover-header-button bg-primary-system inline-block w-40 cursor-pointer items-center justify-center rounded-2xl py-4 text-white'
                 >
